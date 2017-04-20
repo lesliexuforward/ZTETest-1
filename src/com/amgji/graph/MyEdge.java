@@ -66,6 +66,16 @@ public class MyEdge implements Comparable<MyEdge> {
 		return String.format("%d-%d %d", v, w, weight);
 	}
 
+	
+	public int getWeight() {
+		return weight;
+	}
+	public int getV() {
+		return v;
+	}
+	public int getW() {
+		return w;
+	}
 	/**
 	 *  单元测试
 	 * @param args

@@ -6,8 +6,8 @@ import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
-public class MyEdgeWeightedDigraph {
-	private static final String NEWLINE = System.getProperty("line.separator");
+public class MyEdgeWeightedGraph {
+	public static final String NEWLINE = System.getProperty("line.separator");
 
 	private final int V; // 顶点总数
 	private int E; // 边的总数
@@ -16,7 +16,7 @@ public class MyEdgeWeightedDigraph {
 	/**
 	 * 初始化一个顶点数为V边数为0的加权无向图
 	 */
-	public MyEdgeWeightedDigraph(int V) {
+	public MyEdgeWeightedGraph(int V) {
 		if (V < 0)
 			throw new IllegalArgumentException("Number of vertices must be nonnegative");
 		this.V = V;
@@ -46,7 +46,7 @@ public class MyEdgeWeightedDigraph {
 	/**
 	 * 从流中读取一个加权无向图 如：src/resource/data.txt
 	 */
-	public MyEdgeWeightedDigraph(In in) {
+	public MyEdgeWeightedGraph(In in) {
 		this(in.readInt());
 		int E = in.readInt();
 		if (E < 0)
@@ -58,7 +58,7 @@ public class MyEdgeWeightedDigraph {
 			validateVertex(w);
 			int weight = in.readInt();
 			MyEdge e = new MyEdge(v, w, weight);
-			addMyEdge(e);
+			addEdge(e);
 		}
 	}
 
@@ -105,7 +105,7 @@ public class MyEdgeWeightedDigraph {
 	/**
 	 * 为这个无向图添加一条边
 	 */
-	public void addMyEdge(MyEdge e) {
+	public void addEdge(MyEdge e) {
 		int v = e.either();
 		int w = e.other(v);
 		validateVertex(v);
@@ -170,6 +170,11 @@ public class MyEdgeWeightedDigraph {
 		}
 		return s.toString();
 	}
+	
+
+	public Bag<MyEdge>[] getAdj() {
+		return adj;
+	}
 
 	/**
 	 * 单元测试
@@ -177,7 +182,7 @@ public class MyEdgeWeightedDigraph {
 	public static void main(String[] args) {
 		File file = new File("src/resource/data.txt");
 		In in = new In(file);
-		MyEdgeWeightedDigraph G = new MyEdgeWeightedDigraph(in);
+		MyEdgeWeightedGraph G = new MyEdgeWeightedGraph(in);
 		StdOut.println(G);
 	}
 }
