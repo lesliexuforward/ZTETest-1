@@ -3,29 +3,27 @@ package com.amgji.graph;
 import edu.princeton.cs.algs4.StdOut;
 
 public class MyEdge implements Comparable<MyEdge> {
-	private final int v;
-	private final int w;
-	private final double weight;
+	private final int v; // 顶点之一
+	private final int w; // 另一个顶点
+	private final double weight; // 边的权重
 
 	/**
-	     * Initializes an MyEdge between vertices {@code v} and {@code w} of
-	     * the given {@code weight}.
-	     *
-	     * @param  v one vertex
-	     * @param  w the other vertex
-	     * @param  weight the weight of this MyEdge
-	     * @throws IllegalArgumentException if either {@code v} or {@code w} 
-	     *         is a negative integer
-	     * @throws IllegalArgumentException if {@code weight} is {@code NaN}
-	     */
-	    public MyEdge(int v, int w, double weight) {
-	        if (v < 0) throw new IllegalArgumentException("vertex index must be a nonnegative integer");
-	        if (w < 0) throw new IllegalArgumentException("vertex index must be a nonnegative integer");
-	        if (Double.isNaN(weight)) throw new IllegalArgumentException("Weight is NaN");
-	        this.v = v;
-	        this.w = w;
-	        this.weight = weight;
-	    }
+	 * 
+	 * @param v 顶点之一
+	 * @param w 另一个顶点
+	 * @param weight 边的权重
+	 */
+	public MyEdge(int v, int w, double weight) {
+		if (v < 0)
+			throw new IllegalArgumentException("vertex index must be a nonnegative integer");
+		if (w < 0)
+			throw new IllegalArgumentException("vertex index must be a nonnegative integer");
+		if (Double.isNaN(weight))
+			throw new IllegalArgumentException("Weight is NaN");
+		this.v = v;
+		this.w = w;
+		this.weight = weight;
+	}
 
 	/**
 	 * Returns the weight of this MyEdge.
