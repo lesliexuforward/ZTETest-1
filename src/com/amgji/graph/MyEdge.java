@@ -5,7 +5,7 @@ import edu.princeton.cs.algs4.StdOut;
 public class MyEdge implements Comparable<MyEdge> {
 	private final int v; // 顶点之一
 	private final int w; // 另一个顶点
-	private final double weight; // 边的权重
+	private final int weight; // 边的权重
 
 	/**
 	 * 
@@ -13,7 +13,7 @@ public class MyEdge implements Comparable<MyEdge> {
 	 * @param w 另一个顶点
 	 * @param weight 边的权重
 	 */
-	public MyEdge(int v, int w, double weight) {
+	public MyEdge(int v, int w, int weight) {
 		if (v < 0)
 			throw new IllegalArgumentException("vertex index must be a nonnegative integer");
 		if (w < 0)
@@ -24,34 +24,26 @@ public class MyEdge implements Comparable<MyEdge> {
 		this.w = w;
 		this.weight = weight;
 	}
-
 	/**
-	 * Returns the weight of this MyEdge.
-	 *
-	 * @return the weight of this MyEdge
+	 * 
+	 * @return 返回边的权重
 	 */
-	public double weight() {
+	public int weight() {
 		return weight;
 	}
 
 	/**
-	 * Returns either endpoint of this MyEdge.
-	 *
-	 * @return either endpoint of this MyEdge
+	 * 
+	 * @return 返回其中一个顶点
 	 */
 	public int either() {
 		return v;
 	}
 
 	/**
-	 * Returns the endpoint of this MyEdge that is different from the given
-	 * vertex.
-	 *
-	 * @param vertex
-	 *            one endpoint of this MyEdge
-	 * @return the other endpoint of this MyEdge
-	 * @throws IllegalArgumentException
-	 *             if the vertex is not one of the endpoints of this MyEdge
+	 * 
+	 * @param vertex 当前顶点
+	 * @return 返回当前边的另一个顶点
 	 */
 	public int other(int vertex) {
 		if (vertex == v)
@@ -63,38 +55,23 @@ public class MyEdge implements Comparable<MyEdge> {
 	}
 
 	/**
-	 * Compares two MyEdges by weight. Note that {@code compareTo()} is not
-	 * consistent with {@code equals()}, which uses the reference equality
-	 * implementation inherited from {@code Object}.
-	 *
-	 * @param that
-	 *            the other MyEdge
-	 * @return a negative integer, zero, or positive integer depending on
-	 *         whether the weight of this is less than, equal to, or greater
-	 *         than the argument MyEdge
+	 * 比较两条边的权重大小
 	 */
 	@Override
 	public int compareTo(MyEdge that) {
-		return Double.compare(this.weight, that.weight);
+		return Integer.compare(this.weight, that.weight);
 	}
 
-	/**
-	 * Returns a string representation of this MyEdge.
-	 *
-	 * @return a string representation of this MyEdge
-	 */
 	public String toString() {
 		return String.format("%d-%d %.5f", v, w, weight);
 	}
 
 	/**
-	 * Unit tests the {@code MyEdge} data type.
-	 *
+	 *  单元测试
 	 * @param args
-	 *            the command-line arguments
 	 */
 	public static void main(String[] args) {
-		MyEdge e = new MyEdge(12, 34, 5.67);
+		MyEdge e = new MyEdge(12, 34, 8);
 		StdOut.println(e);
 	}
 }
