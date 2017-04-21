@@ -5,7 +5,7 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
 public class MyEdgeWeightedDigraph {
-	private static final String NEWLINE = System.getProperty("line.separator");
+	public static final String NEWLINE = System.getProperty("line.separator");
 
 	private final int V; // number of vertices in this digraph
 	private int E; // number of edges in this digraph
@@ -138,7 +138,6 @@ public class MyEdgeWeightedDigraph {
 
 	/**
 	 * 单元测试
-	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
