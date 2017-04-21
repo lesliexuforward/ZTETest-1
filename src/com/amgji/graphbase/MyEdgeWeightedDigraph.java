@@ -1,5 +1,9 @@
 package com.amgji.graphbase;
 
+import java.io.File;
+
+import com.amgji.graph.MyEdgeWeightedGraph;
+
 import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
@@ -41,6 +45,7 @@ public class MyEdgeWeightedDigraph {
 			validateVertex(w);
 			int weight = in.readInt();
 			addEdge(new MyDirectedEdge(v, w, weight));
+			addEdge(new MyDirectedEdge(w, v, weight));
 		}
 	}
 
@@ -122,7 +127,7 @@ public class MyEdgeWeightedDigraph {
 		}
 		return list;
 	}
-
+	@Override
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		s.append(V + " " + E + NEWLINE);
@@ -141,7 +146,8 @@ public class MyEdgeWeightedDigraph {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		In in = new In(args[0]);
+		File file = new File("src/resource/data.txt");
+		In in = new In(file);
 		MyEdgeWeightedDigraph G = new MyEdgeWeightedDigraph(in);
 		StdOut.println(G);
 	}

@@ -28,9 +28,9 @@ public class MyDirectedEdge {
 	public int weight() {
 		return weight;
 	}
-
+	@Override
 	public String toString() {
-		return v + "->" + w + " " + String.format("%d", weight);
+		return v + "--"+weight+"-->" + w + " " ;
 	}
 
 //	public static void main(String[] args) {
