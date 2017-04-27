@@ -177,9 +177,9 @@ public class MyDijkstraSP {
 			throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
 	}
 
-	public static void findPath(int[] a) {
-		StdOut.printf("%d to %d (%.2f)  ", a[i], a[i+1], sp2.distTo(a[i+1]));
-		for (MyDirectedEdge e : sp.pathTo(a[i+1])) {
+	public static void findPath(MyDijkstraSP sp, int[] a, int i) {
+		StdOut.printf("%d to %d (%.2f)  ", a[i], a[i + 1], sp2.distTo(a[i + 1]));
+		for (MyDirectedEdge e : sp.pathTo(a[i + 1])) {
 			StdOut.print(e + "   ");
 		}
 		StdOut.println();
@@ -225,7 +225,7 @@ public class MyDijkstraSP {
 			for (int i = 0; i < a.length - 1; i++) {
 				switch (a[i]) {
 				case 2:
-					
+					//findPath(sp2);
 					break;
 				case 4:
 
