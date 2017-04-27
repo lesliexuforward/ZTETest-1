@@ -1,9 +1,12 @@
 package com.amgji.dijkstrasp;
 
 import java.io.File;
+import java.util.List;
 
+import com.amgji.graphbase.HotpotQueue;
 import com.amgji.graphbase.MyDirectedEdge;
 import com.amgji.graphbase.MyEdgeWeightedDigraph;
+import com.amgji.utils.FullPermutation;
 
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.IndexMinPQ;
@@ -15,6 +18,12 @@ public class MyDijkstraSP {
 	private MyDirectedEdge[] edgeTo; // edgeTo[v] = last edge on shortest s->v
 
 	private IndexMinPQ<Double> pq; // 索引优先队列
+	private static MyDijkstraSP sp2;
+	private static MyDijkstraSP sp4;
+	private static MyDijkstraSP sp7;
+	private static MyDijkstraSP sp12;
+	private static MyDijkstraSP sp13;
+	private static MyDijkstraSP sp14;
 
 	/**
 	 * 生成一个由起点s出发到有向图中其他节点的最短距离树
@@ -71,7 +80,8 @@ public class MyDijkstraSP {
 	}
 
 	/**
-	 *  判断是否从s能到达v
+	 * 判断是否从s能到达v
+	 * 
 	 * @param v
 	 * @return
 	 */
@@ -167,6 +177,14 @@ public class MyDijkstraSP {
 			throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
 	}
 
+	public static void findPath(int[] a) {
+		StdOut.printf("%d to %d (%.2f)  ", a[i], a[i+1], sp2.distTo(a[i+1]));
+		for (MyDirectedEdge e : sp.pathTo(a[i+1])) {
+			StdOut.print(e + "   ");
+		}
+		StdOut.println();
+	}
+
 	/**
 	 * Unit tests the {@code DijkstraSP} data type.
 	 *
@@ -174,6 +192,8 @@ public class MyDijkstraSP {
 	 *            the command-line arguments
 	 */
 	public static void main(String[] args) {
+		List<int[]> hotpotList = FullPermutation.getFullPermutation();
+
 		File file = new File("src/resource/data.txt");
 		In in = new In(file);
 		MyEdgeWeightedDigraph G = new MyEdgeWeightedDigraph(in);
@@ -182,18 +202,50 @@ public class MyDijkstraSP {
 		MyDijkstraSP sp = new MyDijkstraSP(G, 0);
 
 		// print shortest path
-//		for (int t = 0; t < G.V(); t++) {
-//			if (sp.hasPathTo(t)) {
-//				StdOut.printf("%d to %d (%.2f)  ", 0, t, sp.distTo(t));
-//				for (MyDirectedEdge e : sp.pathTo(t)) {
-//					StdOut.print(e + "   ");
-//				}
-//				StdOut.println();
-//			} else {
-//				StdOut.printf("%d to %d         no path\n", 0, t);
-//			}
-//		}
-		
+		// for (int t = 0; t < G.V(); t++) {
+		// if (sp.hasPathTo(t)) {
+		// StdOut.printf("%d to %d (%.2f) ", 0, t, sp.distTo(t));
+		// for (MyDirectedEdge e : sp.pathTo(t)) {
+		// StdOut.print(e + " ");
+		// }
+		// StdOut.println();
+		// } else {
+		// StdOut.printf("%d to %d no path\n", 0, t);
+		// }
+		// }
+		// 起点为绿点的图 2, 4, 7, 12, 13, 14
+		sp2 = new MyDijkstraSP(G, 2);
+		sp4 = new MyDijkstraSP(G, 4);
+		sp7 = new MyDijkstraSP(G, 7);
+		sp12 = new MyDijkstraSP(G, 12);
+		sp13 = new MyDijkstraSP(G, 13);
+		sp14 = new MyDijkstraSP(G, 14);
+
+		for (int[] a : hotpotList) {
+			for (int i = 0; i < a.length - 1; i++) {
+				switch (a[i]) {
+				case 2:
+					
+					break;
+				case 4:
+
+					break;
+				case 7:
+
+					break;
+				case 12:
+
+					break;
+				case 13:
+
+					break;
+				case 14:
+
+					break;
+				}
+			}
+		}
+
 		if (sp.hasPathTo(17)) {
 			StdOut.printf("%d to %d (%.2f)  ", 0, 17, sp.distTo(17));
 			for (MyDirectedEdge e : sp.pathTo(17)) {
